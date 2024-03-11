@@ -22,7 +22,7 @@ export default function App() {
       dato.descripcion.includes(filter)
   );
   return (
-    <div>
+    <div className="main">
       <Search handleFilter={handleFilter} />
       <Table data={filterData} />
     </div>

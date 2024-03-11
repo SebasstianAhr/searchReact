@@ -9,8 +9,8 @@ export default function Search({handleFilter}) {
         handleFilter(inputValue)
     }
   return (
-    <div>
-        <input onChange={handleChange} value={search} type="text" />
+    <div className='div-search'>
+        <input placeholder='Search' onChange={handleChange} value={search} type="text" />
     </div>
   )
 }
