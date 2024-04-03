@@ -84,6 +84,7 @@ th {
 td {
   padding: 0.7rem 0.5rem;
   color: #a8a8a8;
+  font-size: 1.2rem;
 }
 
 tr:hover td {
@@ -92,6 +93,36 @@ tr:hover td {
   transition: all ease 0.3s;
 }
 
+tr:hover .fa-edit{
+  color: rgb(255, 225, 0);
+}
+
+tr:hover .fa-trash{
+  color: #d20000;
+}
+
+.table-options{
+  text-align: center;
+}
+
+.td-options{
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.fa-edit{
+  color: #d1b900b0;
+  cursor: pointer;
+}
+
+.fa-trash{
+  color: #d20000c0;
+  cursor: pointer;
+}
+
+.fa-edit{
+  padding-right: 1rem;
+}
 
 .div-mostrar{
   font-size: 1.1rem;

@@ -1,6 +1,9 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
-export default function Table({data}) {
+export default function Table({data, eliminarPersona}) {
+
   return (
     <div className='div-table'>
         <table>
@@ -9,6 +12,7 @@ export default function Table({data}) {
                     <th>ID</th>
                     <th>NOMBRE</th>
                     <th>DESCRIPCION</th>
+                    <th className='table-options'>OPCIONES</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,10 +21,15 @@ export default function Table({data}) {
                     <td>{item.id}</td>
                     <td>{item.nombre}</td>
                     <td>{item.descripcion}</td>
+                    <td className='td-options'>
+                      <FontAwesomeIcon className='fa-edit' icon={faPenToSquare}/>  
+                      <FontAwesomeIcon className='fa-trash' onClick={()=>eliminarPersona(item)}  icon={faTrashCan}/>  
+                    </td>
                   </tr>
                 ))}
             </tbody>
         </table>
     </div>
   )
+
 }

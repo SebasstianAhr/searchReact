@@ -8,7 +8,7 @@ export default function App() {
   const [pageSize, setPageSize] = useState(5); // Almacena el tamaño de la página (estado inicial 5)
   const [currentPage, setCurrentPage] = useState(1); // Almacena la página actual (estado inicial 1)
 
-  const data = [
+  const [personas, setPersonas] = useState([
     { id: "1", nombre: "sebasstian", descripcion: "persona1" },
     { id: "2", nombre: "nicol", descripcion: "persona2" },
     { id: "3", nombre: "valentina", descripcion: "persona3" },
@@ -28,8 +28,8 @@ export default function App() {
     { id: "17", nombre: "laura", descripcion: "persona17" },
     { id: "18", nombre: "roberto", descripcion: "persona18" },
     { id: "19", nombre: "patricia", descripcion: "persona19" },
-    { id: "20", nombre: "oscar", descripcion: "persona20" },
-  ];
+    { id: "20", nombre: "oscar", descripcion: "persona20" }
+  ])
 
   const handleFilter = (inputValue) => {
     // Función que actualiza el estado `filter` con el valor introducido en el campo de búsqueda
@@ -44,10 +44,10 @@ export default function App() {
   };
 
   const startIndex = (currentPage - 1) * pageSize; // Calcula el índice de inicio de la página actual
-  const endIndex = Math.min(startIndex + pageSize, data.length); // Calcula el índice de fin de la página actual
+  const endIndex = Math.min(startIndex + pageSize, personas.length); // Calcula el índice de fin de la página actual
 
   // Filtra los datos según el valor del filtro
-  const filteredData = data.filter(
+  const filteredData = personas.filter(
     (dato) =>
       dato.id.includes(filter) ||
       dato.nombre.includes(filter) ||
@@ -56,6 +56,13 @@ export default function App() {
 
   // Obtiene la sublista de datos que se va a mostrar en la página actual
   const paginatedData = filteredData.slice(startIndex, endIndex);
+
+  const eliminar = (producto) =>{
+    const newData = [...paginatedData]
+    const index = newData.indexOf(producto)
+    newData.splice(index,1)
+    setPersonas(newData)
+  }
 
   return (
     <div className="main">
@@ -72,10 +79,10 @@ export default function App() {
         </select>
         <Search handleFilter={handleFilter} />
       </div>
-      <Table data={paginatedData} />
+      <Table data={paginatedData} eliminarPersona={eliminar} />
       <div className="div-mostrar">
         <p className="mostrar">
-          Mostrando {startIndex + 1} - {endIndex} de {filteredData.length} registros
+          Mostrando {startIndex + 1} - {filteredData.length} de {endIndex} registros
         </p>
       </div>
     </div>
