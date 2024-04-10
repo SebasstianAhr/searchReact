@@ -1,9 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 * {
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 body {
@@ -14,7 +14,7 @@ body {
   /* background-image: url("./assets/imgMain2.jpg");
   background-size: cover;
   background-attachment: fixed; */
-  background-color: #1f1f1f;
+  background-color: #101a2d;
 }
 
 #root {
@@ -37,11 +37,29 @@ body {
 .select {
   padding: 0.3rem;
   border-radius: 4px;
-  background-color: #323232;
-  color: #e7e7e7;
+  background-color: #1e293b;
+  box-shadow: inset 0 1px 0 0 #ffffff0d;
+  color: #ffff;
+  border: none;
 }
 .select:focus{
   outline: none;
+}
+.button-agregar{
+  margin-left: 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #2ba5d9;
+  box-shadow: inset 0 1px 0 0 #ffffff0d;
+  color: #ffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.6rem;
+  cursor: pointer;
+}
+
+.button-agregar:hover{
+  background-color: #4cbceb;
 }
 
 .div-search {
@@ -52,15 +70,22 @@ body {
 
 .div-search input {
   border-radius: 5px;
-  border: 1px solid #767676;
+  border: none;
   padding: 0.4rem;
   font-size: 1rem;
-  background-color: #323232;
+  background-color: #1e293b;
+  box-shadow: inset 0 1px 0 0 #ffffff0d;
   color: #fff;
+}
+.div-search input:hover {
+  background-color: #303e55;
 }
 
 .div-search input:focus {
   outline: none;
+}
+.div-search input::placeholder {
+  color: #c2c2c2;
 }
 
 table {
@@ -68,7 +93,8 @@ table {
   text-align: left;
   border-collapse: collapse;
   border-radius: 7px;
-  background-color: #323232;
+  background-color: #1e293b;
+  box-shadow: inset 0 1px 0 0 #ffffff0d;
 }
 
 thead {
@@ -78,19 +104,19 @@ thead {
 th {
   padding: 1rem 0.5rem;
   font-weight: 700;
-  color: #e7e7e7;
+  color: #2ba5d9;
 }
 
 td {
   padding: 0.7rem 0.5rem;
-  color: #a8a8a8;
+  color: #c9c9c9;
   font-size: 1.2rem;
 }
 
 tr:hover td {
-  background-color: #00000048;
+  background-color: #303e55;
   color: #fff;
-  transition: all ease 0.3s;
+  transition: all ease 0.1s;
 }
 
 tr:hover .fa-edit{
@@ -130,3 +156,94 @@ tr:hover .fa-trash{
   color: #e7e7e7;
 }
 
+/*MODAL*/
+
+.modal-agregar{
+  color: #ffff;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+  background-color: #060a11ab;
+  backdrop-filter: blur(2px);
+  
+}
+.modal-agregar-form{
+  width: 100%;
+  height: 42%;
+  max-width: 25rem;
+  margin-top: 4.3rem;
+  padding: 2rem;
+  background-color: #1e293b;
+  box-shadow: inset 0 1px 0 0 #ffffff0d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.form-agregar-modal{
+  width: 80%;
+}
+.modal-agregar-lab-inp{
+  display: flex;
+  flex-direction: column;
+}
+.modal-agregar-lab-inp label{
+  margin-bottom: 0.2rem;
+}
+.modal-agregar-lab-inp input{
+  color: #ffff;
+  background-color: #243248;
+  box-shadow: inset 0 1px 0 0 #ffffff0d;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  border: none;
+  border-radius: 2px;
+}
+
+.modal-agregar-lab-inp input:focus{
+  outline: none;
+}
+
+.modal-agregar-lab-inp input:hover{
+  background-color: #303e55
+}
+
+
+.div-buttons-agregar{
+  display: flex;
+  gap: 1rem;
+  justify-content: end;
+}
+
+.button-modal-agregar{
+  padding: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  box-shadow: inset 0 1px 0 0 #ffffff0d;
+}
+
+.button-modal-agregar-aceptar{
+  background-color: #2ba5d9 ;
+  color: #ffff;
+}
+.button-modal-agregar-aceptar:hover{
+  background-color: #4cbceb ;
+}
+
+.button-modal-agregar-cancelar{
+  background-color: #dbdbdb;
+  color: #101a2d;
+}
+.button-modal-agregar-cancelar:hover{
+  background-color: #ffffff;
+  
+}
