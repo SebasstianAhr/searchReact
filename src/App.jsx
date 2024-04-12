@@ -4,11 +4,7 @@ import Search from "./components/Search";
 import Modal from "./components/Modal";
 
 export default function App() {
-  // **Estado**4
-  const [filter, setFilter] = useState(""); // Almacena el valor del filtro (estado inicial vacío)
-  const [pageSize, setPageSize] = useState(5); // Almacena el tamaño de la página (estado inicial 5)
-  const [currentPage, setCurrentPage] = useState(1); // Almacena la página actual (estado inicial 1)
-
+  
   const [personas, setPersonas] = useState([
     {
       id: "1",
@@ -59,58 +55,12 @@ export default function App() {
       id: "10",
       nombre: "Cafetera",
       caracteristicas: "Prepara café caliente en minutos",
-    },
-    {
-      id: "11",
-      nombre: "Secador de pelo",
-      caracteristicas: "Seca el cabello rápidamente",
-    },
-    {
-      id: "12",
-      nombre: "Plancha de pelo",
-      caracteristicas: "Alisa el cabello de forma eficiente",
-    },
-    {
-      id: "13",
-      nombre: "Cepillo de dientes eléctrico",
-      caracteristicas: "Limpia los dientes de forma automática",
-    },
-    {
-      id: "14",
-      nombre: "Aspiradora de mano",
-      caracteristicas: "Ideal para limpiar áreas pequeñas",
-    },
-    {
-      id: "15",
-      nombre: "Cortadora de cabello",
-      caracteristicas: "Corta el cabello de manera precisa",
-    },
-    {
-      id: "16",
-      nombre: "Exprimidor de jugo",
-      caracteristicas: "Extrae el jugo de frutas y verduras",
-    },
-    {
-      id: "17",
-      nombre: "Horno eléctrico",
-      caracteristicas: "Cocina alimentos al horno de forma eficaz",
-    },
-    {
-      id: "18",
-      nombre: "Máquina de afeitar eléctrica",
-      caracteristicas: "Afeita la barba de forma suave",
-    },
-    {
-      id: "19",
-      nombre: "Limpiador facial",
-      caracteristicas: "Limpia la piel profundamente",
-    },
-    {
-      id: "20",
-      nombre: "Dispensador de jabón automático",
-      caracteristicas: "Dispensa jabón de manera automática",
-    },
+    }
   ]);
+  const [filter, setFilter] = useState(""); 
+  const [pageSize, setPageSize] = useState(personas.length); 
+  const [currentPage, setCurrentPage] = useState(1); 
+
 
   const handleFilter = (inputValue) => {
     // Función que actualiza el estado `filter` con el valor introducido en el campo de búsqueda
@@ -138,6 +88,7 @@ export default function App() {
   // Obtiene la sublista de datos que se va a mostrar en la página actual
   const paginatedData = filteredData.slice(startIndex, endIndex);
 
+
   const eliminar = (producto) => {
     const newData = [...paginatedData];
     const index = newData.indexOf(producto);
@@ -148,14 +99,19 @@ export default function App() {
   //modal de Agregar
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const agregarProducto = (producto) => {
+    setPersonas([...personas, producto]);
+  };
+
   return (
     <div className="main">
-      <Modal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />
+       <Modal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} agregarProducto={agregarProducto} />
+      
       <div className="div-search-select">
         <select
           className="select"
           value={pageSize}
-          onChange={handlePageSizeChange}
+          onChange={(e) => handlePageSizeChange(e)}
         >
           <option value={5}>5</option>
           <option value={10}>10</option>
